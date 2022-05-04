@@ -3,32 +3,48 @@
 
 **Skriv din rapport här!**
 
-_Du kan ta bort all text som finns sedan tidigare_.
+I screens har jag skapat en second acitivity för att skicka information mellan det olika aktiviteterna. 
+med intent får man detta att fungera, i intent finns olika sätt att skicka information, jag har använt mig av bundles och extras. Informationen/texten jag skickar
+är Louise, detta kommer att sparas även när jag stänger ned. 
 
-## Följande grundsyn gäller dugga-svar:
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
+** kod ** 
 
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+Button och findViewbyId har en sån här kod, sen en till med close iställer för start. denna starta och stänger second activity.
+intent.putExtras talar om vad som ska skrivas ifall name hittas. 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+     Button button = findViewById(R.id.start_second_activity);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("name", "Louise");
+                startActivity(intent);
+
+            }
+        });
     }
-}
+       
+```
+   I denna koden talar jag om att i typen Textview med varibeln textview ska vi finna id name.
+    denna kommer med extras.getString att ge oss de namnet vi skrivit.
+    public void onClick... finish(); talar om att nu är det klart. 
+```
+        TextView textView = findViewById(R.id.name);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras!= null) {
+            String name = extras.getString("name");
+            int number =extras.getInt("number");
+            textView.setText(name + "," + number );
+        }
+        Button close = findViewById(R.id.close_second_activity);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 ```
 
 Bilder läggs i samma mapp som markdown-filen.
