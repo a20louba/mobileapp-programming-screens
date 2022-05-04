@@ -49,7 +49,8 @@ intent.putExtras talar om vad som ska skrivas ifall name hittas.
 
 Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
+![](Screenshot_20220504_140029.png)
+![](Screenshot_20220504_140029.png)
 
 Läs gärna:
 
